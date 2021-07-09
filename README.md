@@ -47,7 +47,7 @@ SaaS platform to design and manage data inside a no-code Database with ease.
 -  `DELETE /[TABLE_ID]/[KEY]` 
 
 ## GTD _(Getting Things Done)_
-- [ ] - **Minimal** frontend setup
+- [ ] Minimal frontend setup
 - [ ] Minimal backend setup
 - [ ] DB connection
 - [ ] Basic schema definition/creation with ORM
