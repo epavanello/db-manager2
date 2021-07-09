@@ -4,10 +4,10 @@
 SaaS platform to design and manage data inside a no-code Database with ease.
 
 ## Functionalities
-- Db schemas designed graphically
+- Db schemas designed graphically (New tables, new fields, drag fields on form/list)
 - Table views (list/form/massive assignment)
-- Columns filtrable, sortable, groupable
-- Dependencies copyable
+- Columns filter-able, sort-able, group-able
+- Cascade copy (dependencies tables)
 - Table relations (1-n field-table)
 - Table interactions (sub-tables, relation tables)
 - Validators/trasfomations (injectable JS scripts for validate insert/update/delete, list/form adjusts, virtual sources, filters with authorizations)
@@ -16,9 +16,8 @@ SaaS platform to design and manage data inside a no-code Database with ease.
 - Swagger dynamic crud apis
 
 ## Frontend Stack
-- Frontend
 - Svelte
-- Carbon ibm
+- Carbon IBM
 - Tailwind
 
 ## Backend Stack
@@ -27,7 +26,6 @@ SaaS platform to design and manage data inside a no-code Database with ease.
 - Postgres
 - Swagger generator
 - JS injection (or V8 binding) 
-
 
 ## Schema
 - Table
@@ -53,6 +51,7 @@ SaaS platform to design and manage data inside a no-code Database with ease.
 - [ ] Basic schema definition/creation with ORM
 - [ ] First rest APIs (/shape, /list, /save)
 - [ ] Basic UI components and rest calls
+- [ ] JS editor and injection
 - [ ] SSO integration
 - [ ] UI polish
 - [ ] Launch OSS (Project Hunter, DEV.to, Twitter)
