@@ -10,7 +10,7 @@ SaaS platform to design and manage data inside a no-code Database with ease.
 - Cascade copy (dependencies tables)
 - Table relations (1-n field-table)
 - Table interactions (sub-tables, relation tables)
-- Validators/trasfomations (injectable JS scripts for validate insert/update/delete, list/form adjusts, virtual sources, filters with authorizations)
+- Validators/transfomations (injectable JS scripts for validate insert/update/delete, list/form adjusts, virtual sources, filters with authorizations)
 - Authorizations (permission rules for roles, readonly, create/update, crud, single tables)
 - Embeddable svelte components (table from id, method, mode, multi selection )
 - Swagger dynamic crud apis
