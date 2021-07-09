@@ -38,10 +38,21 @@ SaaS platform to design and manage data inside a no-code Database with ease.
 - Roles
 - Users
 
-## Rest apis
+## Rest APIs
 -  `GET /[TABLE_ID]/shape`
 -  `GET /[TABLE_ID]/list/[PARAMS]` 
 -  `GET /[TABLE_ID]/row/[KEY]` 
 -  `POST /[TABLE_ID]`
 -  `PATCH /[TABLE_ID]/[KEY]`
 -  `DELETE /[TABLE_ID]/[KEY]` 
+
+## GTD _(Getting Things Done)_
+- [ ] - **Minimal** frontend setup
+- [ ] Minimal backend setup
+- [ ] DB connection
+- [ ] Basic schema definition/creation with ORM
+- [ ] First rest APIs (/shape, /list, /save)
+- [ ] Basic UI components and rest calls
+- [ ] SSO integration
+- [ ] UI polish
+- [ ] Launch OSS (Project Hunter, DEV.to, Twitter)
