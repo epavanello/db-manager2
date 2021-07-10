@@ -15,24 +15,13 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @Get('createTable')
-  async createTable() {
-    await this.knex.schema.createTable('test', (test) => {
-      test.increments();
-      test.string('name');
-      test.timestamps();
-    });
-
-    return 'Done';
-  }
-
   @Get('getRow')
   async getRow() {
-    return this.knex.select('name').from('test');
+    return this.knex.select('*').from('table');
   }
 
   @Get('createRow')
   async createRow() {
-    return this.knex.insert({ name: 'Mario' }).into('test');
+    return this.knex.insert({ name: 'dipen' }).into('table');
   }
 }

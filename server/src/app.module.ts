@@ -4,14 +4,17 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 @Module({
-  imports: [KnexModule.forRoot({
-    config: {
-      client: "sqlite3",
-      useNullAsDefault: true,
-      connection: ':memory:',
-    },
-  }),
-],
+  imports: [
+    KnexModule.forRoot({
+      config: {
+        client: 'sqlite3',
+        useNullAsDefault: true,
+        connection: {
+          filename: './dev.sqlite3',
+        },
+      },
+    }),
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
