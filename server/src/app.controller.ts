@@ -2,6 +2,7 @@ import { Controller, Get } from '@nestjs/common';
 import { Knex } from 'knex';
 import { InjectKnex } from 'nestjs-knex';
 import { AppService } from './app.service';
+import { Field, Table } from './schema';
 
 @Controller()
 export class AppController {
@@ -17,11 +18,16 @@ export class AppController {
 
   @Get('getRow')
   async getRow() {
-    return this.knex.select('*').from('table');
+    return this.knex<Table>('table')
+      .first('*')
+      .then(async (res) => ({
+        ...res,
+        fields: await this.knex<Field>('field').select('*'),
+      }));
   }
 
   @Get('createRow')
   async createRow() {
-    return this.knex.insert({ name: 'dipen' }).into('table');
+    return this.knex<Table>('table').insert({ name: 't', description: 'Test' });
   }
 }
