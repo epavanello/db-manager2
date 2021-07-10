@@ -1,9 +1,17 @@
 import { Module } from '@nestjs/common';
+import { KnexModule } from 'nestjs-knex';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 @Module({
-  imports: [],
+  imports: [KnexModule.forRoot({
+    config: {
+      client: "sqlite3",
+      useNullAsDefault: true,
+      connection: ':memory:',
+    },
+  }),
+],
   controllers: [AppController],
   providers: [AppService],
 })
