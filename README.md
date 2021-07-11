@@ -21,9 +21,9 @@ SaaS platform to design and manage data inside a no-code Database with ease.
 - Tailwind
 
 ## Backend Stack
-- TS (or Golang for performance)
-- TypeORM (or Gorm)
-- Postgres
+- NestJS
+- Knex
+- Sqlite/Postgres
 - Swagger generator
 - JS injection (or V8 binding) 
 
@@ -45,10 +45,10 @@ SaaS platform to design and manage data inside a no-code Database with ease.
 -  `DELETE /[TABLE_ID]/[KEY]` 
 
 ## GTD _(Getting Things Done)_
-- [ ] Minimal frontend setup
-- [ ] Minimal backend setup
-- [ ] DB connection
-- [ ] Basic schema definition/creation with ORM
+- [x] Minimal frontend setup
+- [x] Minimal backend setup
+- [x] DB connection
+- [x] Basic schema definition/creation with migrations
 - [ ] First rest APIs (/shape, /list, /save)
 - [ ] Basic UI components and rest calls
 - [ ] JS editor and injection
