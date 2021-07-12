@@ -37,13 +37,13 @@ SaaS platform to design and manage data inside a no-code Database with ease.
 - Users
 
 ## Rest APIs
--  [GET] `/tables` _List of all table names_
--  [GET] `/tables/[TABLE_ID]` _Get current table definition_ 
--  [GET] `/tables/[TABLE_ID]/list` _get list data of specified table_ 
--  [GET] `/tables/[TABLE_ID]/row/[KEY]` _get row data for specific table_
--  [POST] `/tables/[TABLE_ID]` _create new row_
--  [PATCH] `/tables/[TABLE_ID]/[KEY]` _update current row_
--  [DELETE] `/tables/[TABLE_ID]/[KEY]` _delete current row_
+-  [x] [GET] `/tables` _List of all table names_
+-  [x] [GET] `/tables/[TABLE_ID]` _Get current table definition_ 
+-  [x] [GET] `/tables/[TABLE_ID]/list` _get list data of specified table_ 
+-  [ ] [GET] `/tables/[TABLE_ID]/row/[KEY]` _get row data for specific table_
+-  [ ] [POST] `/tables/[TABLE_ID]` _create new row_
+-  [ ] [PATCH] `/tables/[TABLE_ID]/[KEY]` _update current row_
+-  [ ] [DELETE] `/tables/[TABLE_ID]/[KEY]` _delete current row_
 
 ## GTD _(Getting Things Done)_
 - [x] Minimal frontend setup
