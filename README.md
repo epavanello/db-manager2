@@ -39,7 +39,7 @@ SaaS platform to design and manage data inside a no-code Database with ease.
 ## Rest APIs
 -  [x] [GET] `/tables` _List of all table names_
 -  [x] [GET] `/tables/[TABLE_ID]` _Get current table definition_ 
--  [x] [GET] `/tables/[TABLE_ID]/list` _get list data of specified table_ 
+-  [-] [GET] `/tables/[TABLE_ID]/list` _get list data of specified table_ 
 -  [ ] [GET] `/tables/[TABLE_ID]/row/[KEY]` _get row data for specific table_
 -  [ ] [POST] `/tables/[TABLE_ID]` _create new row_
 -  [ ] [PATCH] `/tables/[TABLE_ID]/[KEY]` _update current row_
@@ -50,7 +50,7 @@ SaaS platform to design and manage data inside a no-code Database with ease.
 - [x] Minimal backend setup
 - [x] DB connection
 - [x] Basic schema definition/creation with migrations
-- [ ] First rest APIs (/shape, /list, /save)
+- [ ] First rest APIs (see above)
 - [ ] Basic UI components and rest calls
 - [ ] JS editor and injection
 - [ ] SSO integration

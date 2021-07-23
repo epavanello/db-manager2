@@ -75,7 +75,7 @@ export async function seed(knex: Knex): Promise<void> {
       id: 2,
       list_id: 1,
       field_id: 2,
-      filter: true,
+      filter: false,
     },
     {
       id: 3,

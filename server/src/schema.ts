@@ -24,6 +24,7 @@ export interface List {
 
 export interface ListField {
   id: number
+  // Indica che il campo va usato come filtro per la lista (è quindi un parametro della lista)
   filter: boolean
   list_id: number
   field_id: number

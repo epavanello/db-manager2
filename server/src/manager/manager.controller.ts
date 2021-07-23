@@ -1,4 +1,4 @@
-import { ConsoleLogger, Controller, Get, Param } from '@nestjs/common'
+import { Controller, Get, Param } from '@nestjs/common'
 import { Knex } from 'knex'
 import { InjectKnex } from 'nestjs-knex'
 import { Table, Field, List, ListField } from 'src/schema'
@@ -7,6 +7,7 @@ import { Table, Field, List, ListField } from 'src/schema'
 export class ManagerController {
   constructor(@InjectKnex() private readonly knex: Knex) {}
 
+  // List of all table names
   @Get()
   allTables() {
     return this.knex<Table>('table')
@@ -15,11 +16,7 @@ export class ManagerController {
       .select('description')
   }
 
-  @Get('/test')
-  test() {
-    return this.knex<ListField>('list_field')
-  }
-
+  // Get current table definition
   @Get(':id')
   async getTable(@Param('id') id: number) {
     const table = await this.knex<Table>('table').where({ id }).first()
@@ -42,5 +39,12 @@ export class ManagerController {
         }))
       ),
     }
+  }
+
+  // get list data of specified table
+  @Get(':id/list')
+  async getList(@Param('id') id: number) {
+    // WIP
+    return []
   }
 }

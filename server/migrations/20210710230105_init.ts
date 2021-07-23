@@ -1,5 +1,7 @@
 import { Knex } from 'knex'
 
+// https://lucid.app/lucidchart/invitations/accept/inv_6f202f41-953f-4e58-9b6d-00253b931cd0?viewport_loc=-624%2C-49%2C3240%2C1509%2C0_0
+
 export async function up(knex: Knex): Promise<void> {
   return knex.schema
     .createTable('table', (table) => {
