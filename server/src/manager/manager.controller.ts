@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   HttpException,
   HttpStatus,
@@ -138,7 +139,7 @@ export class ManagerController {
     const tableName = await this.managerService.getTableName(id)
 
     await this.knex(tableName).insert(values)
-    
+
     return {}
   }
 
@@ -164,8 +165,36 @@ export class ManagerController {
     // Calculate filter condition
     let keysCondition = this.managerService.extractValues(query, keys)
 
-    await this.knex(tableName).update(values).where(keysCondition)
+    const updated = await this.knex(tableName).update(values).where(keysCondition)
 
+    if (updated == 0) {
+      throw new HttpException(`Row not found`, HttpStatus.BAD_REQUEST)
+    }
+    return {}
+  }
+
+  /**
+   * Delete a row identified by query keys
+   * @param table_id table id
+   * @param query object with keys
+   * @returns empty object
+   */
+  @Delete(':table_id/row')
+  async deleteRow(@Param('table_id') table_id: number, @Query() query: Record<string, string>) {
+    // Get table name
+    const tableName = await this.managerService.getTableName(table_id)
+
+    // Get keys of table
+    const keys = await this.managerService.getKeyNames(table_id)
+
+    // Calculate filter condition
+    let keysCondition = this.managerService.extractValues(query, keys)
+
+    const deleted = await this.knex(tableName).del().where(keysCondition)
+
+    if (deleted == 0) {
+      throw new HttpException(`Row not found`, HttpStatus.BAD_REQUEST)
+    }
     return {}
   }
 }

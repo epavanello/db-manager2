@@ -43,7 +43,7 @@ SaaS platform to design and manage data inside a no-code Database with ease.
 -  [x] [GET] `/tables/[TABLE_ID]/row?[KEY_1]=a&[KEY_2]=b` _get row data for specific table_
 -  [x] [POST] `/tables/[TABLE_ID]/row` _create new row (payload json)_
 -  [x] [PATCH] `/tables/[TABLE_ID]/row?[KEY_1]=a&[KEY_2]=b` _update current row (payload json)_
--  [ ] [DELETE] `/tables/[TABLE_ID]/row?[KEY_1]=a&[KEY_2]=b` _delete current row_
+-  [x] [DELETE] `/tables/[TABLE_ID]/row?[KEY_1]=a&[KEY_2]=b` _delete current row_
 
 ## GTD _(Getting Things Done)_
 - [x] Minimal frontend setup

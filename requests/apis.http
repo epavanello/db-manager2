@@ -27,3 +27,6 @@ Content-Type: application/json
     "cognome": "Giacomo",
     "nome": "Poretto"
 }
+
+###
+DELETE http://127.0.0.1:3000/tables/1/row?azienda=2&matricola=9 HTTP/1.1
