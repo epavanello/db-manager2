@@ -1,4 +1,16 @@
-import { Body, Controller, Get, HttpException, HttpStatus, Param, Post, Query, Req, Request } from '@nestjs/common'
+import {
+  Body,
+  Controller,
+  Get,
+  HttpException,
+  HttpStatus,
+  Param,
+  Patch,
+  Post,
+  Query,
+  Req,
+  Request,
+} from '@nestjs/common'
 import { Knex } from 'knex'
 import { InjectKnex } from 'nestjs-knex'
 import { Table, Field, List, ListField } from 'src/schema'
@@ -19,12 +31,12 @@ export class ManagerController {
 
   /**
    * Get current table definition
-   * @param id table id
+   * @param table_id table id
    * @returns detailed object of required table
    */
-  @Get(':id')
-  async getTable(@Param('id') id: number) {
-    const table = await this.managerService.getTable(id)
+  @Get(':table_id')
+  async getTable(@Param('table_id') table_id: number) {
+    const table = await this.managerService.getTable(table_id)
     return {
       ...table,
       fields: (await this.knex<Field>('field').where({ table_id: table.id })).map(
@@ -54,24 +66,24 @@ export class ManagerController {
    * @param query object with list filters
    * @returns filtered table rows
    */
-  @Get(':id/list/:list_id')
-  async getList(@Param('id') id: number, @Param('list_id') list_id: number, @Query() query: Record<string, string>) {
+  @Get(':table_id/list/:list_id')
+  async getList(
+    @Param('table_id') table_id: number,
+    @Param('list_id') list_id: number,
+    @Query() query: Record<string, string>
+  ) {
     // Get table name
-    const tableName = await this.managerService.getTableName(id)
+    const tableName = await this.managerService.getTableName(table_id)
 
     // Extract list filters
-    const filters = await this.knex<List>('list')
-      .join<ListField>('list_field', 'list.id', '=', 'list_field.list_id')
-      .join<Field>('field', 'list_field.field_id', '=', 'field.id')
-      .where({ filter: true })
-      .select('name')
+    const filters = await this.managerService.getFilterNames(table_id, list_id)
 
     // Calculate filter condition
     let filtersCondition = this.managerService.extractValues(query, filters)
 
     // Get fields to read
     const fields = await this.knex<Field>('field').where({
-      table_id: id,
+      table_id,
     })
 
     // Get filtered rows
@@ -85,24 +97,24 @@ export class ManagerController {
   /**
    * get list data of specified table
    * Eg. /tables/1/row?azienda=2&matricola=1
-   * @param id table id
+   * @param table_id table id
    * @param query object with keys
    * @returns matched row
    */
-  @Get(':id/row')
-  async getRow(@Param('id') id: number, @Query() query: Record<string, string>) {
+  @Get(':table_id/row')
+  async getRow(@Param('table_id') table_id: number, @Query() query: Record<string, string>) {
     // Get table name
-    const tableName = await this.managerService.getTableName(id)
+    const tableName = await this.managerService.getTableName(table_id)
 
     // Get keys of table
-    const keys = await this.knex<Field>('field').where({ table_id: id, key: true }).select('name')
+    const keys = await this.managerService.getKeyNames(table_id)
 
     // Calculate filter condition
     let keysCondition = this.managerService.extractValues(query, keys)
 
     // Get fields to read
     const fields = await this.knex<Field>('field').where({
-      table_id: id,
+      table_id,
     })
 
     // Get filtered rows
@@ -114,11 +126,46 @@ export class ManagerController {
     return row
   }
 
-  @Post(':id')
+  /**
+   * Create a new row for specified table
+   * @param id table id
+   * @param values object containing keys and values to insert
+   * @returns empty object
+   */
+  @Post(':id/row')
   async createRow(@Param('id') id: number, @Body() values: Record<string, string>) {
     // Get table name
     const tableName = await this.managerService.getTableName(id)
 
-    return await this.knex(tableName).insert(values)
+    await this.knex(tableName).insert(values)
+    
+    return {}
+  }
+
+  /**
+   * Update a row identified by query keys
+   * @param table_id table id
+   * @param query object with keys
+   * @param values values to update
+   * @returns empty object
+   */
+  @Patch(':table_id/row')
+  async updateRow(
+    @Param('table_id') table_id: number,
+    @Query() query: Record<string, string>,
+    @Body() values: Record<string, string>
+  ) {
+    // Get table name
+    const tableName = await this.managerService.getTableName(table_id)
+
+    // Get keys of table
+    const keys = await this.managerService.getKeyNames(table_id)
+
+    // Calculate filter condition
+    let keysCondition = this.managerService.extractValues(query, keys)
+
+    await this.knex(tableName).update(values).where(keysCondition)
+
+    return {}
   }
 }
