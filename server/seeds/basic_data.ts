@@ -90,4 +90,15 @@ export async function seed(knex: Knex): Promise<void> {
       filter: false,
     },
   ])
+
+  await knex
+    .insert([
+      { azienda: 1, matricola: 1, cognome: 'Mario', nome: 'Rossi' },
+      { azienda: 1, matricola: 2, cognome: 'Luca', nome: 'Verdi' },
+      { azienda: 2, matricola: 1, cognome: 'Giacomo', nome: 'Gialli' },
+      { azienda:2, matricola: 2, cognome: 'Ferdinando', nome: 'Marrone' },
+      { azienda: 3, matricola: 1, cognome: 'Thomas', nome: 'Neri' },
+      { azienda: 3, matricola: 2, cognome: 'Mirco', nome: 'Blu' },
+    ])
+    .into('dipen')
 }
