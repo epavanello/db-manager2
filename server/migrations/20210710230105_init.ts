@@ -4,13 +4,11 @@ import { Knex } from 'knex'
 
 export async function up(knex: Knex): Promise<void> {
   return knex.schema
-    .dropTableIfExists('table')
     .createTable('table', (table) => {
       table.increments()
       table.string('name').notNullable()
       table.string('description').notNullable()
     })
-    .dropTableIfExists('field')
     .createTable('field', (table) => {
       table.increments()
       table.string('name').notNullable()
@@ -24,7 +22,6 @@ export async function up(knex: Knex): Promise<void> {
       table.integer('table_id').unsigned().notNullable()
       table.foreign('table_id').references('id').inTable('table')
     })
-    .dropTableIfExists('list')
     .createTable('list', (table) => {
       table.increments()
       table.string('description').notNullable()
@@ -32,7 +29,6 @@ export async function up(knex: Knex): Promise<void> {
       table.integer('table_id').unsigned().notNullable()
       table.foreign('table_id').references('id').inTable('table')
     })
-    .dropTableIfExists('list_field')
     .createTable('list_field', (table) => {
       table.increments()
       table.boolean('filter').notNullable()
@@ -42,7 +38,6 @@ export async function up(knex: Knex): Promise<void> {
       table.integer('field_id').unsigned().notNullable()
       table.foreign('field_id').references('id').inTable('field')
     })
-    .dropTableIfExists('dipen')
     .createTable('dipen', (table) => {
       table.string('azienda', 10).notNullable()
       table.string('matricola', 10).notNullable()
@@ -54,9 +49,5 @@ export async function up(knex: Knex): Promise<void> {
 }
 
 export async function down(knex: Knex): Promise<void> {
-  return knex.schema
-    .dropTable('field')
-    .dropTable('table')
-    .dropTable('list')
-    .dropTable('list_field')
+  return knex.schema.dropTable('field').dropTable('table').dropTable('list').dropTable('list_field')
 }

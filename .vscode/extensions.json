@@ -4,6 +4,7 @@
         "bradlc.vscode-tailwindcss",
         "humao.rest-client",
         "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode"
+        "esbenp.prettier-vscode",
+        "alexcvzz.vscode-sqlite"
     ]
 }

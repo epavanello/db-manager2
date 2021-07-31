@@ -1,0 +1,67 @@
+# Get all tables
+GET http://127.0.0.1:3000/design/tables HTTP/1.1
+
+###
+# Create new table
+POST http://127.0.0.1:3000/design/tables HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "dipen_gruppi",
+    "description": "Attributo anagrafico"
+}
+
+###
+# Get specific table
+GET http://127.0.0.1:3000/design/tables/2 HTTP/1.1
+
+###
+# Update specific table
+PATCH http://127.0.0.1:3000/design/tables/2 HTTP/1.1
+Content-Type: application/json
+
+{
+    "description": "Attributi anagrafici"
+}
+
+###
+# Delete specific table
+DELETE http://127.0.0.1:3000/design/tables/2 HTTP/1.1
+
+###
+# FIELDS
+
+# Get all fields of specified table
+GET http://127.0.0.1:3000/design/tables/2/fields HTTP/1.1
+
+###
+# Create new field of specified table
+POST http://127.0.0.1:3000/design/tables/2/fields HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Matricola",
+    "description": "Matricola",
+    "key": true,
+    "mandatory": false,
+    "type": "string",
+    "length": 10
+}
+
+###
+# Get specific field of specified table
+GET http://127.0.0.1:3000/design/tables/2/fields/5 HTTP/1.1
+
+###
+# Update specific field of specified table
+PATCH http://127.0.0.1:3000/design/tables/2/fields/5 HTTP/1.1
+Content-Type: application/json
+
+{
+    "mandatory": true
+}
+
+###
+# Delete specific field of specified table
+DELETE http://127.0.0.1:3000/design/tables/2/fields/5 HTTP/1.1
+

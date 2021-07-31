@@ -37,17 +37,19 @@ SaaS platform to design and manage data inside a no-code Database with ease.
 - Users
 
 ## Rest APIs
+Design namespace allow you to define the shape of tables.
+Manage namespace allow you to CRUD data of specified tables.
 ### design
--  [ ] [GET]    `/design/tables` _List of all table_
--  [ ] [POST]   `/design/tables` _Create a new table (payload json)_
--  [ ] [GET]    `/design/tables/:table_id` _Get current table_
--  [ ] [PATCH]  `/design/tables/:table_id` _Update current table_
--  [ ] [DELETE] `/design/tables/:table_id` _Delete current table_
+-  [x] [GET]    `/design/tables` _List of all table_
+-  [x] [POST]   `/design/tables` _Create a new table (payload json)_
+-  [x] [GET]    `/design/tables/:table_id` _Get current table_
+-  [x] [PATCH]  `/design/tables/:table_id` _Update current table_
+-  [x] [DELETE] `/design/tables/:table_id` _Delete current table_
 
--  [ ] [GET]    `/design/tables/:table_id/fields` _List of all fields_
--  [ ] [POST]   `/design/tables/:table_id/fields` _Create a new field (payload json)_
--  [ ] [PATCH]  `/design/tables/:table_id/fields/:name` _Update a field (payload json)_
--  [ ] [DELETE] `/design/tables/:table_id/fields/:name` _Delete a field (payload json)_
+-  [x] [GET]    `/design/tables/:table_id/fields` _List of all fields_
+-  [x] [POST]   `/design/tables/:table_id/fields` _Create a new field (payload json)_
+-  [-] [PATCH]  `/design/tables/:table_id/fields/:field_id` _Update a field (payload json)_
+-  [-] [DELETE] `/design/tables/:table_id/fields/:field_id` _Delete a field (payload json)_
 
 -  [ ] [GET]    `/design/tables/:table_id/list` _List of all lists_
 -  [ ] [POST]   `/design/tables/:table_id/list` _Create a new list (payload json)_

@@ -26,7 +26,7 @@ export class ManagerController {
    * @returns array of tables
    */
   @Get()
-  allTables() {
+  getAllTables() {
     return this.knex<Table>('table').select('id').select('name').select('description')
   }
 
