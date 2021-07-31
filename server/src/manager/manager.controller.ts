@@ -1,13 +1,4 @@
-import {
-  Controller,
-  Get,
-  HttpException,
-  HttpStatus,
-  Param,
-  Query,
-  Req,
-  Request,
-} from '@nestjs/common'
+import { Controller, Get, HttpException, HttpStatus, Param, Query, Req, Request } from '@nestjs/common'
 import { Knex } from 'knex'
 import { InjectKnex } from 'nestjs-knex'
 import { Table, Field, List, ListField } from 'src/schema'
@@ -19,10 +10,7 @@ export class ManagerController {
   // List of all table names
   @Get()
   allTables() {
-    return this.knex<Table>('table')
-      .select('id')
-      .select('name')
-      .select('description')
+    return this.knex<Table>('table').select('id').select('name').select('description')
   }
 
   // Get current table definition
@@ -31,9 +19,9 @@ export class ManagerController {
     const table = await this.knex<Table>('table').where({ id }).first()
     return {
       ...table,
-      fields: (
-        await this.knex<Field>('field').where({ table_id: table.id })
-      ).map(({ table_id, ...fieldRest }) => fieldRest),
+      fields: (await this.knex<Field>('field').where({ table_id: table.id })).map(
+        ({ table_id, ...fieldRest }) => fieldRest
+      ),
 
       list: await Promise.all(
         (
@@ -53,11 +41,7 @@ export class ManagerController {
   // get list data of specified table
   // Eg. /tables/1/list/1?azienda=1
   @Get(':id/list/:list_id')
-  async getList(
-    @Param('id') id: number,
-    @Param('list_id') list_id: number,
-    @Query() query: Record<string, string>
-  ) {
+  async getList(@Param('id') id: number, @Param('list_id') list_id: number, @Query() query: Record<string, string>) {
     const table = await this.knex<Table>('table').where({ id }).first()
 
     const filters = await this.knex<List>('list')
@@ -71,10 +55,7 @@ export class ManagerController {
     for (const filter of filters) {
       const key = filter.name.toLowerCase()
       if (queryKeys.indexOf(key) == -1) {
-        throw new HttpException(
-          `Filter '${filter.name}' missing`,
-          HttpStatus.BAD_REQUEST
-        )
+        throw new HttpException(`Filter '${filter.name}' missing`, HttpStatus.BAD_REQUEST)
       }
       filterCondition = { ...filterCondition, [filter.name]: query[key] }
     }
