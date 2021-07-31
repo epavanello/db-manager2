@@ -37,13 +37,37 @@ SaaS platform to design and manage data inside a no-code Database with ease.
 - Users
 
 ## Rest APIs
--  [x] [GET] `/tables` _List of all table names_
--  [x] [GET] `/tables/[TABLE_ID]` _Get current table definition_
--  [x] [GET] `/tables/[TABLE_ID]/list?[FILTER_1]=a&[FILTER_2]=b` _get list data of specified table_ 
--  [x] [GET] `/tables/[TABLE_ID]/row?[KEY_1]=a&[KEY_2]=b` _get row data for specific table_
--  [x] [POST] `/tables/[TABLE_ID]/row` _create new row (payload json)_
--  [x] [PATCH] `/tables/[TABLE_ID]/row?[KEY_1]=a&[KEY_2]=b` _update current row (payload json)_
--  [x] [DELETE] `/tables/[TABLE_ID]/row?[KEY_1]=a&[KEY_2]=b` _delete current row_
+### design
+-  [ ] [GET]    `/design/tables` _List of all table_
+-  [ ] [POST]   `/design/tables` _Create a new table (payload json)_
+-  [ ] [GET]    `/design/tables/:table_id` _Get current table_
+-  [ ] [PATCH]  `/design/tables/:table_id` _Update current table_
+-  [ ] [DELETE] `/design/tables/:table_id` _Delete current table_
+
+-  [ ] [GET]    `/design/tables/:table_id/fields` _List of all fields_
+-  [ ] [POST]   `/design/tables/:table_id/fields` _Create a new field (payload json)_
+-  [ ] [PATCH]  `/design/tables/:table_id/fields/:name` _Update a field (payload json)_
+-  [ ] [DELETE] `/design/tables/:table_id/fields/:name` _Delete a field (payload json)_
+
+-  [ ] [GET]    `/design/tables/:table_id/list` _List of all lists_
+-  [ ] [POST]   `/design/tables/:table_id/list` _Create a new list (payload json)_
+-  [ ] [PATCH]  `/design/tables/:table_id/list/:list_id` _Update a list (payload json)_
+-  [ ] [DELETE] `/design/tables/:table_id/list/:list_id` _Delete a list (payload json)_
+
+
+-  [ ] [GET]    `/design/tables/:table_id/list:list_id/fields` _List of all list fields_
+-  [ ] [POST]   `/design/tables/:table_id/list/:list_id/fields` _Create a new list field (payload json)_
+-  [ ] [PATCH]  `/design/tables/:table_id/list/:list_id/fields/:list_field_id` _Update a list field (payload json)_
+-  [ ] [DELETE] `/design/tables/:table_id/list/:list_id/fields/:list_field_id` _Delete a list field (payload json)_
+
+### manage
+-  [x] [GET]    `/manage/tables` _List of all table names_
+-  [x] [GET]    `/manage/tables/:table_id` _Get current table definition_
+-  [x] [GET]    `/manage/tables/:table_id/list?[FILTER_1]=a&[FILTER_2]=b` _get list data of specified table_ 
+-  [x] [GET]    `/manage/tables/:table_id/row?[KEY_1]=a&[KEY_2]=b` _get row data for specific table_
+-  [x] [POST]   `/manage/tables/:table_id/row` _create new row (payload json)_
+-  [x] [PATCH]  `/manage/tables/:table_id/row?[KEY_1]=a&[KEY_2]=b` _update current row (payload json)_
+-  [x] [DELETE] `/manage/tables/:table_id/row?[KEY_1]=a&[KEY_2]=b` _delete current row_
 
 ## GTD _(Getting Things Done)_
 - [x] Minimal frontend setup
@@ -56,3 +80,8 @@ SaaS platform to design and manage data inside a no-code Database with ease.
 - [ ] SSO integration
 - [ ] UI polish
 - [ ] Launch OSS (Project Hunter, DEV.to, Twitter)
+
+
+## Next step
+- [ ] Swagger api
+- [ ] table id or alias support

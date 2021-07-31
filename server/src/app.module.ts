@@ -3,6 +3,7 @@ import { KnexModule } from 'nestjs-knex';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ManagerModule } from './manager/manager.module';
+import { DesignerModule } from './designer/designer.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { ManagerModule } from './manager/manager.module';
       },
     }),
     ManagerModule,
+    DesignerModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -1,16 +1,16 @@
-GET http://127.0.0.1:3000/tables HTTP/1.1
+GET http://127.0.0.1:3000/manage/tables HTTP/1.1
 
 ###
-GET http://127.0.0.1:3000/tables/1 HTTP/1.1
+GET http://127.0.0.1:3000/manage/tables/1 HTTP/1.1
 
 ###
-GET http://127.0.0.1:3000/tables/1/list/1?azienda=2 HTTP/1.1
+GET http://127.0.0.1:3000/manage/tables/1/list/1?azienda=2 HTTP/1.1
 
 ###
-GET http://127.0.0.1:3000/tables/1/row?azienda=2&matricola=9 HTTP/1.1
+GET http://127.0.0.1:3000/manage/tables/1/row?azienda=2&matricola=9 HTTP/1.1
 
 ###
-POST http://127.0.0.1:3000/tables/1/row HTTP/1.1
+POST http://127.0.0.1:3000/manage/tables/1/row HTTP/1.1
 Content-Type: application/json
 
 {
@@ -20,7 +20,7 @@ Content-Type: application/json
     "nome": "Poretti"
 }
 ###
-PATCH http://127.0.0.1:3000/tables/1/row?azienda=2&matricola=9 HTTP/1.1
+PATCH http://127.0.0.1:3000/manage/tables/1/row?azienda=2&matricola=9 HTTP/1.1
 Content-Type: application/json
 
 {
@@ -29,4 +29,4 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://127.0.0.1:3000/tables/1/row?azienda=2&matricola=9 HTTP/1.1
+DELETE http://127.0.0.1:3000/manage/tables/1/row?azienda=2&matricola=9 HTTP/1.1

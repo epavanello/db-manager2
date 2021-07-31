@@ -17,7 +17,7 @@ import { InjectKnex } from 'nestjs-knex'
 import { Table, Field, List, ListField } from 'src/schema'
 import { ManagerService } from './manager.service'
 
-@Controller('tables')
+@Controller('/manage/tables')
 export class ManagerController {
   constructor(@InjectKnex() private readonly knex: Knex, private readonly managerService: ManagerService) {}
 
