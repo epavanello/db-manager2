@@ -1,1 +1,10 @@
-GET http://127.0.0.1/tables HTTP/1.1
+GET http://127.0.0.1:3000/tables HTTP/1.1
+
+###
+GET http://127.0.0.1:3000/tables/1 HTTP/1.1
+
+###
+GET http://127.0.0.1:3000/tables/1/list/1?azienda=2 HTTP/1.1
+
+###
+GET http://127.0.0.1:3000/tables/1/row?azienda=2&matricola=1 HTTP/1.1

@@ -2,6 +2,8 @@
     "recommendations": [
         "svelte.svelte-vscode",
         "bradlc.vscode-tailwindcss",
-        "humao.rest-client"
+        "humao.rest-client",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode"
     ]
 }
