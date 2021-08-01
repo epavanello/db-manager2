@@ -2,18 +2,11 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common'
 import { query } from 'express'
 import { InjectKnex, Knex } from 'nestjs-knex'
 import { Field, List, ListField, Table } from 'src/schema'
+import { SharedService } from 'src/shared.service'
 
 @Injectable()
 export class ManagerService {
-  constructor(@InjectKnex() private readonly knex: Knex) {}
-
-  async getTable(id: number): Promise<Table> {
-    return await this.knex<Table>('table').where({ id }).first()
-  }
-
-  async getTableName(id: number): Promise<string> {
-    return (await this.knex<Table>('table').where({ id }).select('name').first()).name
-  }
+  constructor(@InjectKnex() private readonly knex: Knex, private readonly sharedService: SharedService) {}
 
   /**
    * Search if all fields specified are contained inside params object and extract one object with all values
@@ -26,7 +19,7 @@ export class ManagerService {
     const paramKeys = Object.keys(params).map((filter) => filter)
     for (const fieldName of fieldNames) {
       if (paramKeys.indexOf(fieldName) == -1) {
-        throw new HttpException(`Missing parameter '${fieldName}'`, HttpStatus.BAD_REQUEST)
+        this.sharedService.entityNotFoundException('Parameter', fieldName)
       }
       keysCondition = { ...keysCondition, [fieldName]: params[fieldName] }
     }

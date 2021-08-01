@@ -14,12 +14,17 @@ import {
 } from '@nestjs/common'
 import { Knex } from 'knex'
 import { InjectKnex } from 'nestjs-knex'
+import { SharedService } from 'src/shared.service'
 import { Table, Field, List, ListField } from 'src/schema'
 import { ManagerService } from './manager.service'
 
 @Controller('/manage/tables')
 export class ManagerController {
-  constructor(@InjectKnex() private readonly knex: Knex, private readonly managerService: ManagerService) {}
+  constructor(
+    @InjectKnex() private readonly knex: Knex,
+    private readonly managerService: ManagerService,
+    private readonly sharedService: SharedService
+  ) {}
 
   /**
    * List of all table names
@@ -37,7 +42,7 @@ export class ManagerController {
    */
   @Get(':table_id')
   async getTable(@Param('table_id') table_id: number) {
-    const table = await this.managerService.getTable(table_id)
+    const table = await this.sharedService.getTable(table_id)
     return {
       ...table,
       fields: (await this.knex<Field>('field').where({ table_id: table.id })).map(
@@ -74,7 +79,7 @@ export class ManagerController {
     @Query() query: Record<string, string>
   ) {
     // Get table name
-    const tableName = await this.managerService.getTableName(table_id)
+    const tableName = await this.sharedService.getTableName(table_id)
 
     // Extract list filters
     const filters = await this.managerService.getFilterNames(table_id, list_id)
@@ -105,7 +110,7 @@ export class ManagerController {
   @Get(':table_id/row')
   async getRow(@Param('table_id') table_id: number, @Query() query: Record<string, string>) {
     // Get table name
-    const tableName = await this.managerService.getTableName(table_id)
+    const tableName = await this.sharedService.getTableName(table_id)
 
     // Get keys of table
     const keys = await this.managerService.getKeyNames(table_id)
@@ -136,7 +141,7 @@ export class ManagerController {
   @Post(':id/row')
   async createRow(@Param('id') id: number, @Body() values: Record<string, string>) {
     // Get table name
-    const tableName = await this.managerService.getTableName(id)
+    const tableName = await this.sharedService.getTableName(id)
 
     await this.knex(tableName).insert(values)
 
@@ -157,7 +162,7 @@ export class ManagerController {
     @Body() values: Record<string, string>
   ) {
     // Get table name
-    const tableName = await this.managerService.getTableName(table_id)
+    const tableName = await this.sharedService.getTableName(table_id)
 
     // Get keys of table
     const keys = await this.managerService.getKeyNames(table_id)
@@ -168,7 +173,7 @@ export class ManagerController {
     const updated = await this.knex(tableName).update(values).where(keysCondition)
 
     if (updated == 0) {
-      throw new HttpException(`Row not found`, HttpStatus.BAD_REQUEST)
+      this.sharedService.entityNotFoundException('Row')
     }
     return {}
   }
@@ -182,7 +187,7 @@ export class ManagerController {
   @Delete(':table_id/row')
   async deleteRow(@Param('table_id') table_id: number, @Query() query: Record<string, string>) {
     // Get table name
-    const tableName = await this.managerService.getTableName(table_id)
+    const tableName = await this.sharedService.getTableName(table_id)
 
     // Get keys of table
     const keys = await this.managerService.getKeyNames(table_id)
@@ -193,7 +198,7 @@ export class ManagerController {
     const deleted = await this.knex(tableName).del().where(keysCondition)
 
     if (deleted == 0) {
-      throw new HttpException(`Row not found`, HttpStatus.BAD_REQUEST)
+      this.sharedService.entityNotFoundException('Row')
     }
     return {}
   }

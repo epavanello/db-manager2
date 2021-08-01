@@ -1,9 +1,9 @@
-import { Module } from '@nestjs/common';
-import { KnexModule } from 'nestjs-knex';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { ManagerModule } from './manager/manager.module';
-import { DesignerModule } from './designer/designer.module';
+import { Module } from '@nestjs/common'
+import { KnexModule } from 'nestjs-knex'
+import { AppController } from './app.controller'
+import { AppService } from './app.service'
+import { ManagerModule } from './manager/manager.module'
+import { DesignerModule } from './designer/designer.module'
 
 @Module({
   imports: [

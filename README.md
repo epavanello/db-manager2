@@ -48,8 +48,8 @@ Manage namespace allow you to CRUD data of specified tables.
 
 -  [x] [GET]    `/design/tables/:table_id/fields` _List of all fields_
 -  [x] [POST]   `/design/tables/:table_id/fields` _Create a new field (payload json)_
--  [-] [PATCH]  `/design/tables/:table_id/fields/:field_id` _Update a field (payload json)_
--  [-] [DELETE] `/design/tables/:table_id/fields/:field_id` _Delete a field (payload json)_
+-  [x] [PATCH]  `/design/tables/:table_id/fields/:field_id` _Update a field (payload json)_
+-  [x] [DELETE] `/design/tables/:table_id/fields/:field_id` _Delete a field (payload json)_
 
 -  [ ] [GET]    `/design/tables/:table_id/list` _List of all lists_
 -  [ ] [POST]   `/design/tables/:table_id/list` _Create a new list (payload json)_
