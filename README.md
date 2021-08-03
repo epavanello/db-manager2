@@ -87,3 +87,4 @@ Manage namespace allow you to CRUD data of specified tables.
 ## Next step
 - [ ] Swagger api
 - [ ] table id or alias support
+- [ ] Theming
