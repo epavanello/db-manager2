@@ -91,3 +91,4 @@ Manage namespace allow you to CRUD data of specified tables.
 
 ## Ideas references
 - Table + filters https://www.airtable.com/templates/featured/exp3FNmOkdHZvprXB/content-calendar
+- https://nocodelist.co/?search=database
