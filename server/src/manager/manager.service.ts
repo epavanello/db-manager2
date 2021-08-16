@@ -1,8 +1,7 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common'
-import { query } from 'express'
+import { Injectable } from '@nestjs/common'
 import { InjectKnex, Knex } from 'nestjs-knex'
-import { Field, List, ListField, Table } from 'src/schema'
-import { SharedService } from 'src/shared.service'
+import { Field, List, ListField } from 'src/schema'
+import { SharedService } from '../shared.service'
 
 @Injectable()
 export class ManagerService {

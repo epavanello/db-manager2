@@ -52,7 +52,7 @@ SaaS platform to design and manage data inside a no-code Database with ease.
 Design namespace allow you to define the shape of tables.
 Manage namespace allow you to CRUD data of specified tables.
 
-### design
+### Design (section to design schemas)
 
 * [x] [GET] `/design/tables` *List of all table*
 * [x] [POST] `/design/tables` *Create a new table (payload json)*
@@ -72,7 +72,7 @@ Manage namespace allow you to CRUD data of specified tables.
 * [ ] [PATCH] `/design/tables/:table_id/list/:list_id/fields/:list_field_id` *Update a list field (payload json)*
 * [ ] [DELETE] `/design/tables/:table_id/list/:list_id/fields/:list_field_id` *Delete a list field (payload json)*
 
-### manage
+### Manage (section to manage data)
 
 * [x] [GET] `/manage/tables` *List of all table names*
 * [x] [GET] `/manage/tables/:table_id` *Get current table definition*

@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common'
-import { SharedService } from 'src/shared.service'
+import { SharedService } from '../shared.service'
 import { ManagerController } from './manager.controller'
 import { ManagerService } from './manager.service'
 
