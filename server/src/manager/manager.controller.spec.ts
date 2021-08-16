@@ -34,19 +34,7 @@ describe('ManagerController', () => {
           name: 'dipen',
           description: 'Anagrafiche',
         },
-        {
-          id: 2,
-          name: 'dipen_gruppi',
-          description: 'Attributi anagrafici',
-        },
-        {
-          id: 3,
-          name: 'dipen_gruppi',
-          description: 'Attributo anagrafico',
-        },
       ]
-
-      console.log('Log results', await managerController.getAllTables())
 
       expect(await managerController.getAllTables()).toEqual(result)
     })
