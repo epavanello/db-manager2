@@ -106,3 +106,13 @@ Manage namespace allow you to CRUD data of specified tables.
 * Table + filters https://www.airtable.com/templates/featured/exp3FNmOkdHZvprXB/content-calendar
 * https://nocodelist.co/?search=database
 * UX - https://www.jotform.com/products/tables/?ref=nocodelist
+
+## Developer steps
+
+1. Clone the repo
+2. Open in VSCODE
+3. Install Yarn ([Installation \| Yarn](https://yarnpkg.com/getting-started/install))
+4. Install Recommended Extensions `CTRL + P` > `'Extensions: Show Recommended Extensions'`
+5. Install dependencies `cd client && yarn` `cd server && yarn`
+6. Migrate and seed db `cd server && yarn knex-rebuild`
+7. Launch backend `cd server && start:dev`
