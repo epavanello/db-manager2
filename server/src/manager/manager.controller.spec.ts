@@ -46,6 +46,8 @@ describe('ManagerController', () => {
         },
       ]
 
+      console.log('Log results', await managerController.getAllTables())
+
       expect(await managerController.getAllTables()).toEqual(result)
     })
   })
