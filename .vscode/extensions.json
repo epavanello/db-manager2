@@ -5,6 +5,7 @@
         "humao.rest-client",
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
-        "alexcvzz.vscode-sqlite"
+        "alexcvzz.vscode-sqlite",
+        "ryanmcalister.unotes"
     ]
 }
