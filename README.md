@@ -99,3 +99,10 @@ Manage namespace allow you to CRUD data of specified tables.
 
 * [ ] Swagger api
 * [ ] table id or alias support
+* [ ] Theming
+
+## Ideas references
+
+* Table + filters https://www.airtable.com/templates/featured/exp3FNmOkdHZvprXB/content-calendar
+* https://nocodelist.co/?search=database
+* UX - https://www.jotform.com/products/tables/?ref=nocodelist
