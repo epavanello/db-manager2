@@ -1,6 +1,6 @@
 # This is a workflow to test backend controllers
 
-name: CI
+name: TEST SERVER
 
 # Controls when the workflow will run
 on:
@@ -29,5 +29,6 @@ jobs:
       - name: Run a multi-line script
         run: |
           cd server
+          yarn
           yarn run knex-rebuild
           yarn run test
