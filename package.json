@@ -41,5 +41,10 @@
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
-  "dependencies": {}
+  "dependencies": {},
+  "jest": {
+    "modulePathIgnorePatterns": [
+      "packages"
+    ]
+  }
 }
