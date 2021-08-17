@@ -33,19 +33,19 @@ export class ManagerController {
     return {
       ...table,
       fields: (await this.knex<Field>('field').where({ table_id: table.id })).map(
-        ({ table_id, ...fieldRest }) => fieldRest
+        ({ table_id: _, ...fieldRest }) => fieldRest
       ),
 
       list: await Promise.all(
         (
           await this.knex<List>('list').where({ table_id: table.id })
-        ).map(async ({ table_id, ...listRest }) => ({
+        ).map(async ({ table_id: _, ...listRest }) => ({
           ...listRest,
           fields: (
             await this.knex<ListField>('list_field').where({
               list_id: listRest.id,
             })
-          ).map(({ list_id, ...fieldRest }) => fieldRest),
+          ).map(({ list_id: _, ...fieldRest }) => fieldRest),
         }))
       ),
     }

@@ -1,5 +1,4 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common'
-import { table } from 'console'
+import { Injectable } from '@nestjs/common'
 import { Knex } from 'knex'
 import { InjectKnex } from 'nestjs-knex'
 import { Field, Table } from 'src/schema'
