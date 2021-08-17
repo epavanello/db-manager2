@@ -6,10 +6,7 @@ import { Field, Table } from './schema'
 
 @Controller()
 export class AppController {
-  constructor(
-    private readonly appService: AppService,
-    @InjectKnex() private readonly knex: Knex
-  ) {}
+  constructor(private readonly appService: AppService, @InjectKnex() private readonly knex: Knex) {}
 
   @Get()
   getHello(): string {

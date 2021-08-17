@@ -8,7 +8,7 @@ export class SharedService {
   constructor(@InjectKnex() private readonly knex: Knex) {}
   extract<T>(properties: Record<keyof T, true>) {
     return function <TActual extends T>(value: TActual) {
-      let result = {} as T
+      const result = {} as T
       for (const property of Object.keys(properties) as Array<keyof T>) {
         result[property] = value[property]
       }

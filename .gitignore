@@ -1,2 +1,3 @@
 server/dev.sqlite3
 .unotes/
+node_modules/

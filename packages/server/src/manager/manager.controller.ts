@@ -72,7 +72,7 @@ export class ManagerController {
     const filters = await this.managerService.getFilterNames(table_id, list_id)
 
     // Calculate filter condition
-    let filtersCondition = this.managerService.extractValues(query, filters)
+    const filtersCondition = this.managerService.extractValues(query, filters)
 
     // Get fields to read
     const fields = await this.knex<Field>('field').where({
@@ -103,7 +103,7 @@ export class ManagerController {
     const keys = await this.managerService.getKeyNames(table_id)
 
     // Calculate filter condition
-    let keysCondition = this.managerService.extractValues(query, keys)
+    const keysCondition = this.managerService.extractValues(query, keys)
 
     // Get fields to read
     const fields = await this.knex<Field>('field').where({
@@ -155,7 +155,7 @@ export class ManagerController {
     const keys = await this.managerService.getKeyNames(table_id)
 
     // Calculate filter condition
-    let keysCondition = this.managerService.extractValues(query, keys)
+    const keysCondition = this.managerService.extractValues(query, keys)
 
     const updated = await this.knex(tableName).update(values).where(keysCondition)
 
@@ -180,7 +180,7 @@ export class ManagerController {
     const keys = await this.managerService.getKeyNames(table_id)
 
     // Calculate filter condition
-    let keysCondition = this.managerService.extractValues(query, keys)
+    const keysCondition = this.managerService.extractValues(query, keys)
 
     const deleted = await this.knex(tableName).del().where(keysCondition)
 

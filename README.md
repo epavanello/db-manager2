@@ -116,3 +116,16 @@ Manage namespace allow you to CRUD data of specified tables.
 5. Install dependencies `cd client && yarn` `cd server && yarn`
 6. Migrate and seed db `cd server && yarn knex-rebuild`
 7. Launch backend `cd server && start:dev`
+
+## Highlighted scripts
+
+### Server
+
+* `yarn run start:dev` - Run the server in watch mode
+* `yarn run knex-rebuild` - Create db and seed data
+* `yarn run test` - Run server tests
+* `yarn run test:cov` - Run test coverage
+### Client
+
+* `yarn run dev` - Run the client
+* `yarn run check` - Verify typescript warning/errors on all project
