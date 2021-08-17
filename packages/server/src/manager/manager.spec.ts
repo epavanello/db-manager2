@@ -2,6 +2,7 @@ import { ManagerController } from './manager.controller'
 import { ManagerService } from './manager.service'
 import { SharedService } from '../shared.service'
 import Knex from 'knex'
+import { HttpException } from '@nestjs/common'
 
 const knex = Knex({
   client: 'sqlite3',
@@ -11,7 +12,15 @@ const knex = Knex({
   },
 })
 
-describe('ManagerController', () => {
+const tableList = [
+  {
+    id: 1,
+    name: 'dipen',
+    description: 'Anagrafiche',
+  },
+]
+
+describe('Manager APIs', () => {
   let managerController: ManagerController
   let managerService: ManagerService
   let sharedService: SharedService
@@ -28,15 +37,16 @@ describe('ManagerController', () => {
 
   describe('getAllTables', () => {
     it('should return an array of all available tables', async () => {
-      const result = [
-        {
-          id: 1,
-          name: 'dipen',
-          description: 'Anagrafiche',
-        },
-      ]
+      expect(await managerController.getAllTables()).toEqual(tableList)
+    })
+  })
 
-      expect(await managerController.getAllTables()).toEqual(result)
+  describe('getTable', () => {
+    it('should return the correct table', async () => {
+      expect(await (await managerController.getTable(1)).name).toEqual(tableList[0].name)
+    })
+    it('should generate exception if missing table id', async () => {
+      await expect(managerController.getTable(999)).rejects.toThrow(HttpException)
     })
   })
 })
