@@ -9,5 +9,9 @@
 		{
 			"path": "packages\\client"
 		}
-	]
+	],
+	"settings": {
+		"editor.formatOnSave": true,
+		"files.eol": "\n"
+	}
 }
