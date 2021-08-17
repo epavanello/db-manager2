@@ -871,7 +871,7 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sveltejs/vite-plugin-svelte@^1.0.0-next.11":
+"@sveltejs/vite-plugin-svelte@1.0.0-next.17":
   version "1.0.0-next.17"
   resolved "https://registry.yarnpkg.com/@sveltejs/vite-plugin-svelte/-/vite-plugin-svelte-1.0.0-next.17.tgz#25a088e71e1a6e0a6701e5fa70ccde353b7783c2"
   integrity sha512-Xh/YYqBMDJnDheutnGHk/I5TO6w9gZ2GMgvG+qQm/gpIRkaTLts6Mw5xDe6cac/nH/aVPPVPibhq2pf26d44fA==
@@ -1845,15 +1845,15 @@ caniuse-lite@^1.0.30001248:
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001251.tgz#6853a606ec50893115db660f82c094d18f096d85"
   integrity sha512-HOe1r+9VkU4TFmnU70z+r7OLmtR+/chB1rdcJUeQlAinjEeb0cKL20tlAtOagNZhbrtLnCvV19B4FmF1rgzl6A==
 
-carbon-components-svelte@^0.39.0:
-  version "0.39.0"
-  resolved "https://registry.yarnpkg.com/carbon-components-svelte/-/carbon-components-svelte-0.39.0.tgz#1acdaafd05d6334b5564106c245dd2bc79d19474"
-  integrity sha512-pz6P8JwU959YyrjJ9TUxM4O9uVjj51htGFWHAXyH2ou2TcY2t2u8DgRQMAXImAqVpwOKgwTNJ5HhnEzNyFhiSw==
+carbon-components-svelte@^0.42.2:
+  version "0.42.2"
+  resolved "https://registry.yarnpkg.com/carbon-components-svelte/-/carbon-components-svelte-0.42.2.tgz#54cacedc6be7e0dad518da2de051f9c49107c3cb"
+  integrity sha512-O1eLYa+kzDEZSqN+TiO60MTXk9FMuB2IcoogFh6d1GzyjoGu7awMunukNxh5LSdDG7OEPTfVtQ2+5C6frgGqEQ==
   dependencies:
-    carbon-icons-svelte "^10.27.0"
+    carbon-icons-svelte "^10.36.0"
     flatpickr "4.6.9"
 
-carbon-icons-svelte@^10.27.0:
+carbon-icons-svelte@^10.36.0:
   version "10.36.0"
   resolved "https://registry.yarnpkg.com/carbon-icons-svelte/-/carbon-icons-svelte-10.36.0.tgz#3f269f2c52520d14fcd42161a633afbb7c68b4bf"
   integrity sha512-YlrHtjdRqMFiptNVpQ4M+gMvpYDoKQydBY5A82thAXIHk9JrbrVLzq6RgJugTijHT8yzMS1zXaw6YYhqL8Qzqw==
@@ -6081,7 +6081,7 @@ supports-hyperlinks@^2.0.0:
     has-flag "^4.0.0"
     supports-color "^7.0.0"
 
-svelte-check@^2.1.0:
+svelte-check@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/svelte-check/-/svelte-check-2.2.4.tgz#103140eeb4bbe65721e023ab210566041abe7224"
   integrity sha512-eGEuZ3UEanOhlpQhICLjKejDxcZ9uYJlGnBGKAPW7uugolaBE6HpEBIiKFZN/TMRFFHQUURgGvsVn8/HJUBfeQ==
@@ -6101,7 +6101,7 @@ svelte-hmr@^0.14.7:
   resolved "https://registry.yarnpkg.com/svelte-hmr/-/svelte-hmr-0.14.7.tgz#7fa8261c7b225d9409f0a86f3b9ea5c3ca6f6607"
   integrity sha512-pDrzgcWSoMaK6AJkBWkmgIsecW0GChxYZSZieIYfCP0v2oPyx2CYU/zm7TBIcjLVUPP714WxmViE9Thht4etog==
 
-svelte-preprocess@^4.0.0, svelte-preprocess@^4.7.2:
+svelte-preprocess@^4.0.0, svelte-preprocess@^4.7.4:
   version "4.7.4"
   resolved "https://registry.yarnpkg.com/svelte-preprocess/-/svelte-preprocess-4.7.4.tgz#e4d5208ab25c2aaaf19e837f7d7bbf7930e61d2b"
   integrity sha512-mDAmaltQl6e5zU2VEtoWEf7eLTfuOTGr9zt+BpA3AGHo8MIhKiNSPE9OLTCTOMgj0vj/uL9QBbaNmpG4G1CgIA==
@@ -6111,7 +6111,7 @@ svelte-preprocess@^4.0.0, svelte-preprocess@^4.7.2:
     detect-indent "^6.0.0"
     strip-indent "^3.0.0"
 
-svelte@^3.37.0:
+svelte@^3.42.1:
   version "3.42.1"
   resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.42.1.tgz#d4b4d9068cce911835f7c6b8ff1d290e1a0b5657"
   integrity sha512-XtExLd2JAU3T7M2g/DkO3UNj/3n1WdTXrfL63OZ5nZq7nAqd9wQw+lR4Pv/wkVbrWbAIPfLDX47UjFdmnY+YtQ==
@@ -6569,7 +6569,7 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-vite@^2.4.0:
+vite@^2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/vite/-/vite-2.5.0.tgz#111ba3679432d426e44566acf480005a7914cbd6"
   integrity sha512-Dn4B+g54PJsMG5WCc4QeFy1ygMXRdTtFrUPegqfk4+vzVQcbF/DqqmI/1bxezArzbujBJg/67QeT5wz8edfJVQ==
