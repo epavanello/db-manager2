@@ -4,11 +4,14 @@
   "description": "DB manager 2",
   "private": true,
   "scripts": {
-    "preinstall": "node -e \"if(process.env.npm_execpath.indexOf('yarn') === -1) throw new Error('You must use Yarn to install, not NPM')\"",
     "client:prod": "yarn workspace client run serve",
     "client:dev": "yarn workspace client run dev",
     "server:prod": "yarn workspace server run start",
-    "server:dev": "yarn workspace server run start:dev"
+    "server:dev": "yarn workspace server run start:dev",
+    "prepare": "husky install",
+    "test": "yarn workspace server run test",
+    "lint": "yarn workspace server run lint",
+    "preinstall": "node -e \"if(process.env.npm_execpath.indexOf('yarn') === -1) throw new Error('You must use Yarn to install, not NPM')\""
   },
   "workspaces": [
     "packages/*"
@@ -24,10 +27,19 @@
   },
   "homepage": "https://github.com/epavanello/db-manager2#readme",
   "devDependencies": {
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
     "@typescript-eslint/eslint-plugin": "^4.28.2",
     "@typescript-eslint/parser": "^4.28.2",
     "eslint": "^7.30.0",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^3.4.0"
-  }
+    "eslint-plugin-prettier": "^3.4.0",
+    "husky": "^7.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "dependencies": {}
 }
