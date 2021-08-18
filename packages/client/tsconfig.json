@@ -6,16 +6,36 @@
     "resolveJsonModule": true,
     "baseUrl": ".",
     "paths": {
-      "$components": ["./src/components"],
-      "$components/*": ["./src/components/*"],
-      "$lib": ["./src/lib"],
-      "$lib/*": ["./src/lib/*"],
-      "$containers": ["./src/containers"],
-      "$containers/*": ["./src/containers/*"],
-      "$styles": ["./src/styles"],
-      "$styles/*": ["./src/styles/*"],
-      "$assets": ["./src/assets"],
-      "$assets/*": ["./src/assets/*"]
+      "$components": [
+        "./src/components"
+      ],
+      "$components/*": [
+        "./src/components/*"
+      ],
+      "$lib": [
+        "./src/lib"
+      ],
+      "$lib/*": [
+        "./src/lib/*"
+      ],
+      "$containers": [
+        "./src/containers"
+      ],
+      "$containers/*": [
+        "./src/containers/*"
+      ],
+      "$styles": [
+        "./src/styles"
+      ],
+      "$styles/*": [
+        "./src/styles/*"
+      ],
+      "$assets": [
+        "./src/assets"
+      ],
+      "$assets/*": [
+        "./src/assets/*"
+      ]
     },
     /**
      * Typecheck JS in `.svelte` and `.js` files by default.
@@ -24,7 +44,13 @@
      * of JS in `.svelte` files.
      */
     "allowJs": true,
-    "checkJs": true
+    "checkJs": true,
+    "strictNullChecks": true
   },
-  "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.js", "src/**/*.svelte"]
+  "include": [
+    "src/**/*.d.ts",
+    "src/**/*.ts",
+    "src/**/*.js",
+    "src/**/*.svelte"
+  ]
 }
