@@ -21,6 +21,9 @@
     "vite": "^2.5.0"
   },
   "dependencies": {
-    "svelte-routing": "^1.6.0"
+    "autoprefixer": "^10.3.1",
+    "postcss": "^8.3.6",
+    "svelte-routing": "^1.6.0",
+    "tailwindcss": "^2.2.7"
   }
 }

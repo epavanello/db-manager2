@@ -25,7 +25,7 @@
 <Grid>
   <Row>
     <Column>
-      <h1>Design tables</h1>
+      <h1 class="mb-6 text-2xl">Design tables</h1>
       <DataTable
         headers={[
           { key: 'name', value: 'Name' },

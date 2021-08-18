@@ -1,4 +1,6 @@
 <script lang="ts">
+  import TailwindCSS from '$lib/TailwindCSS.svelte'
+
   import {
     Header,
     HeaderUtilities,
@@ -27,13 +29,15 @@
   let url = ''
 </script>
 
+<TailwindCSS />
+
 <Router {url}>
   <Header company="DB Manager 2" platformName="with ease" bind:isSideNavOpen>
     <div slot="skip-to-content">
       <SkipToContent />
     </div>
     <HeaderUtilities>
-      <HeaderAction bind:isOpen icon={UserAvatarFilled20}>
+      <HeaderAction bind:isOpen icon={UserAvatarFilled20} class="flex flex-row items-center justify-center">
         <HeaderPanelLinks>
           <HeaderPanelLink>Profile</HeaderPanelLink>
           <HeaderPanelLink>Settings</HeaderPanelLink>

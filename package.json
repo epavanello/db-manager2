@@ -41,7 +41,9 @@
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
-  "dependencies": {},
+  "dependencies": {
+    "tailwindcss": "^2.2.7"
+  },
   "jest": {
     "modulePathIgnorePatterns": [
       "packages"
