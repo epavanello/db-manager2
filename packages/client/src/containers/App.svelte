@@ -6,16 +6,12 @@
     HeaderUtilities,
     HeaderAction,
     HeaderPanelLinks,
-    HeaderPanelDivider,
     HeaderPanelLink,
     SideNav,
     SideNavItems,
     SideNavLink,
     SkipToContent,
     Content,
-    Grid,
-    Row,
-    Column,
   } from 'carbon-components-svelte'
   import UserAvatarFilled20 from 'carbon-icons-svelte/lib/UserAvatarFilled20'
 

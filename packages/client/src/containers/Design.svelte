@@ -33,8 +33,6 @@
   } = fetchInStore<{ id: string; name: string; description: string }[]>('api/design/tables')
 
   let selectedRowIds = []
-
-  $: console.log(selectedRowIds)
 </script>
 
 <Grid>
@@ -93,9 +91,9 @@
 
       <p class="my-2">Use inside your codebase</p>
       <CodeSnippet expanded type="multi">
-        {@html "&#60;script&#62;\n\timport { Table } from 'svelte-db-manager';\n&#60;/script&#62;\n&#60;Table id={" +
-          selectedRowIds[0] +
-          '}/&#62;'}
+        {@html "&#60;script&#62;\n\timport { Table } from 'svelte-db-manager';\n&#60;/script&#62;\n&#60;Table " +
+          (selectedRowIds.length == 1 ? ' id={' + selectedRowIds[0] + '}' : '') +
+          '/&#62;'}
       </CodeSnippet>
     </Column>
   </Row>
