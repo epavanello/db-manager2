@@ -23,6 +23,7 @@ export default <T>(url: string) => {
     data: derived(data, (value) => value),
     loading: derived(loading, (value) => value),
     error: derived(error, (value) => value),
+    resetError: () => error.set(''),
     exec,
   }
 }
