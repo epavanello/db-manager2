@@ -1,6 +1,6 @@
 import { derived, writable } from 'svelte/store'
 
-export default <T>(url: string) => {
+export function fetchInStore<T>(url: string) {
   const loading = writable<boolean>(false)
   const error = writable<string>('')
   const data = writable<T | undefined>(undefined)
@@ -26,4 +26,15 @@ export default <T>(url: string) => {
     resetError: () => error.set(''),
     exec,
   }
+}
+
+export function fetchJson<T>(url: string, payload: Record<string, any>, method: 'POST' | 'PUT' | 'PATCH'): Promise<T> {
+  return fetch(url, {
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+    method,
+  }).then((res) => res.json())
 }

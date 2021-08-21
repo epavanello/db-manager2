@@ -1,5 +1,5 @@
 <script lang="ts">
-  import fetchInStore from '$lib/fetchInStore'
+  import { fetchInStore } from '$lib/network'
 
   import {
     Button,

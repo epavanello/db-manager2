@@ -1,8 +1,12 @@
 {
-    "recommendations": [
-        "humao.rest-client",
-        "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode",
-        "ryanmcalister.unotes"
-    ]
+  "recommendations": [
+    "humao.rest-client",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "ryanmcalister.unotes",
+    "alexcvzz.vscode-sqlite",
+    "orta.vscode-jest",
+    "svelte.svelte-vscode",
+    "bradlc.vscode-tailwindcss"
+  ]
 }

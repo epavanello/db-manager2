@@ -1,17 +1,20 @@
 <script lang="ts">
-  import fetchInStore from '$lib/fetchInStore'
+  import { fetchInStore, fetchJson } from '$lib/network'
 
   import {
     Button,
     CodeSnippet,
     Column,
     DataTable,
+    Form,
     Grid,
     InlineLoading,
     InlineNotification,
+    Modal,
     OverflowMenu,
     OverflowMenuItem,
     Row,
+    TextInput,
     Toolbar,
     ToolbarBatchActions,
     ToolbarContent,
@@ -23,16 +26,29 @@
   import FolderOpen16 from 'carbon-icons-svelte/lib/FolderOpen16'
   import Copy16 from 'carbon-icons-svelte/lib/Copy16'
   import Delete16 from 'carbon-icons-svelte/lib/Delete16'
+  import AddAlt16 from 'carbon-icons-svelte/lib/AddAlt16'
 
   let {
     data,
-    loading,
     error,
     resetError,
-    exec: update,
+    exec: reloadTables,
   } = fetchInStore<{ id: string; name: string; description: string }[]>('api/design/tables')
 
   let selectedRowIds = []
+
+  let openModalAddTable = false
+
+  let addTableData = {
+    name: '',
+    description: '',
+  }
+
+  async function sendAddTableForm() {
+    await fetchJson('api/design/tables', addTableData, 'POST')
+    reloadTables()
+    openModalAddTable = false
+  }
 </script>
 
 <Grid>
@@ -71,13 +87,7 @@
             <ToolbarMenu>
               <ToolbarMenuItem>Download</ToolbarMenuItem>
             </ToolbarMenu>
-            <Button on:click={update}>
-              {#if $loading}
-                <InlineLoading />
-              {:else}
-                Update
-              {/if}
-            </Button>
+            <Button on:click={() => (openModalAddTable = true)} icon={AddAlt16}>Add</Button>
           </ToolbarContent>
         </Toolbar>
       </DataTable>
@@ -98,3 +108,18 @@
     </Column>
   </Row>
 </Grid>
+
+<Modal
+  bind:open={openModalAddTable}
+  modalHeading="Add new table"
+  primaryButtonText="Confirm"
+  secondaryButtonText="Cancel"
+  on:click:button--secondary={() => (openModalAddTable = false)}
+  on:click:button--primary={() => sendAddTableForm()}
+  size="xs"
+>
+  <Form class="grid grid-cols-1 gap-8">
+    <TextInput labelText="Name" bind:value={addTableData.name} />
+    <TextInput labelText="Description" bind:value={addTableData.description} />
+  </Form>
+</Modal>

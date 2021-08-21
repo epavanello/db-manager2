@@ -4,10 +4,10 @@
 			"path": "."
 		},
 		{
-			"path": "packages\\server"
+			"path": "packages/server"
 		},
 		{
-			"path": "packages\\client"
+			"path": "packages/client"
 		}
 	],
 	"settings": {

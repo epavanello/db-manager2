@@ -1,8 +1,0 @@
-{
-    "recommendations": [
-        "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode",
-        "alexcvzz.vscode-sqlite",
-        "orta.vscode-jest"
-    ]
-}
