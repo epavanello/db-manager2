@@ -13,8 +13,7 @@
     "build": "yarn workspace client run build && yarn workspace server run build",
     "prepare": "husky install",
     "test": "yarn workspace server run test",
-    "lint": "yarn workspace server run lint",
-    "preinstall": "node -e \"if(process.env.npm_execpath.indexOf('yarn') === -1) throw new Error('You must use Yarn to install, not NPM')\""
+    "lint": "yarn workspace server run lint"
   },
   "workspaces": [
     "packages/*"
