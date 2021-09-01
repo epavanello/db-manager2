@@ -2,12 +2,26 @@
 
 ## The idea
 
-SaaS platform to design and manage data inside a no-code Database with ease.
+SaaS platform to design database schema and relations and manage data graphically.
+Use your db in your application as a web component (web-elements, react components, svelte components).
+
+#### Example
+
+``` javascript
+import {TableList, TableForm} from 'db-manager-react';
+
+export default () => <>
+    <TableList id="users" multiple onSelectChange={trackMyRows}>
+    </TableList>
+    <TableForm id="users" onComplete={} onCancel={}>
+    </TableForm>
+</>
+```
 
 ## Functionalities
 
 * [ ] Db schemas designed graphically (New tables, new fields, drag fields on form/list)
-* [ ] Table views (list/form/massive assignment)
+* [ ] Table views and manage (list/form/massive assignment)
 * [ ] Columns filter-able, sort-able, group-able
 * [ ] Cascade copy (dependencies tables)
 * [ ] Table relations (1-n field-table)
@@ -19,8 +33,8 @@ SaaS platform to design and manage data inside a no-code Database with ease.
 
 ## MVP boundaries
 
-* [ ] SASS designer (section to design schemas)
-* [ ] SASS manager (section to manage data)
+* [ ] SAAS designer (section to design schemas)
+* [ ] SAAS manager (section to manage data)
 * [ ] List/Forms Web components
 
 ## Frontend Stack
@@ -121,11 +135,12 @@ Manage namespace allow you to CRUD data of specified tables.
 
 ### Server
 
-* `yarn run start:dev` - Run the server in watch mode
-* `yarn run knex-rebuild` - Create db and seed data
-* `yarn run test` - Run server tests
-* `yarn run test:cov` - Run test coverage
+* `yarn run start:dev` \- Run the server in watch mode
+* `yarn run knex-rebuild` \- Create db and seed data
+* `yarn run test` \- Run server tests
+* `yarn run test:cov` \- Run test coverage
+
 ### Client
 
-* `yarn run dev` - Run the client
-* `yarn run check` - Verify typescript warning/errors on all project
+* `yarn run dev` \- Run the client
+* `yarn run check` \- Verify typescript warning/errors on all project
