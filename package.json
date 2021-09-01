@@ -10,7 +10,7 @@
     "server:dev": "yarn workspace server run start:dev",
     "start": "yarn workspace server run start",
     "dev": "npm run client:dev & npm run server:dev",
-    "build": "yarn workspace client run build && yarn workspace server run build",
+    "build": "yarn workspace client run build && yarn workspace server run build && yarn workspace server run knex-rebuild",
     "prepare": "husky install",
     "test": "yarn workspace server run test",
     "lint": "yarn workspace server run lint"
