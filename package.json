@@ -8,6 +8,7 @@
     "client:dev": "yarn workspace client run dev",
     "server:prod": "yarn workspace server run start",
     "server:dev": "yarn workspace server run start:dev",
+    "start": "yarn workspace server run start",
     "dev": "npm run client:dev & npm run server:dev",
     "build": "yarn workspace client run build && yarn workspace server run build",
     "prepare": "husky install",
