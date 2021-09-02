@@ -33,7 +33,7 @@
     error,
     resetError,
     exec: reloadTables,
-  } = fetchInStore<{ id: string; name: string; description: string }[]>('api/design/tables')
+  } = fetchInStore<{ id: string; name: string; description: string }[]>('/api/design/tables')
 
   let selectedRowIds = []
 
@@ -47,7 +47,7 @@
   }
 
   async function sendAddTableForm() {
-    await fetchJson('api/design/tables', addTableData, 'POST')
+    await fetchJson('/api/design/tables', addTableData, 'POST')
     reloadTables()
     openModalAddTable = false
   }
