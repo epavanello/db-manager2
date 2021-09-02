@@ -28,7 +28,7 @@ export function fetchInStore<T>(url: string) {
   }
 }
 
-export function fetchJson<T>(url: string, payload: Record<string, any>, method: 'POST' | 'PUT' | 'PATCH'): Promise<T> {
+export function fetchJson<T>(url: string, payload: Record<string, any>, method: 'POST' | 'PUT' | 'PATCH' | 'DELETE'): Promise<T> {
   return fetch(url, {
     headers: {
       Accept: 'application/json',
