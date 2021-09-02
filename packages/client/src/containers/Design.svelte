@@ -38,6 +38,8 @@
   let selectedRowIds = []
 
   let openModalAddTable = false
+  let openModalConfirm = false
+  let selectedRow;
 
   let addTableData = {
     name: '',
@@ -48,6 +50,12 @@
     await fetchJson('api/design/tables', addTableData, 'POST')
     reloadTables()
     openModalAddTable = false
+  }
+
+  async function sendDeleteTableForm() {
+    await fetchJson('api/design/tables/' + selectedRow?.id, {}, 'DELETE')
+    reloadTables()
+    openModalConfirm = false
   }
 </script>
 
@@ -65,12 +73,12 @@
         batchSelection
         bind:selectedRowIds
       >
-        <span slot="cell" let:cell>
+        <span slot="cell" let:cell let:row>
           {#if cell.key === 'overflow'}
             <OverflowMenu flipped>
               <OverflowMenuItem text="Open" />
               <OverflowMenuItem text="Copy" />
-              <OverflowMenuItem danger text="Delete" />
+              <OverflowMenuItem on:click={() => (openModalConfirm = true, selectedRow = row)} danger text="Delete" />
             </OverflowMenu>
           {:else}{cell.value}{/if}
         </span>
@@ -121,5 +129,22 @@
   <Form class="grid grid-cols-1 gap-8">
     <TextInput labelText="Name" bind:value={addTableData.name} />
     <TextInput labelText="Description" bind:value={addTableData.description} />
+  </Form>
+</Modal>
+
+<Modal
+  bind:open={openModalConfirm}
+  modalHeading="Confirm"
+  primaryButtonText="Confirm"
+  secondaryButtonText="Cancel"
+  
+  on:click:button--primary={() => sendDeleteTableForm()}
+  on:click:button--secondary={() => (openModalConfirm = false)}
+
+  size="xs"
+>
+  <Form class="grid grid-cols-1 gap-8">
+    <TextInput labelText="Name" readonly value={selectedRow?.name} />
+    <TextInput labelText="Description" readonly value={selectedRow?.description} />
   </Form>
 </Modal>
