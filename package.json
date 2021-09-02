@@ -10,7 +10,7 @@
     "server:dev": "yarn workspace server run start:dev",
     "start": "yarn workspace server run start",
     "dev": "run-p client:dev server:dev",
-    "build": "rm packages/server/dev.sqlite3 && yarn workspace client run build && yarn workspace server run build && yarn workspace server run knex-rebuild",
+    "build": "rm packages/server/dev.sqlite3 ; yarn workspace client run build && yarn workspace server run build && yarn workspace server run knex-rebuild",
     "prepare": "husky install",
     "test": "yarn workspace server run test",
     "lint": "yarn workspace server run lint",
