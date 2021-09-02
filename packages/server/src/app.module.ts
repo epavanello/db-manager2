@@ -1,12 +1,16 @@
 import { Module } from '@nestjs/common'
 import { KnexModule } from 'nestjs-knex'
-import { AppController } from './app.controller'
 import { AppService } from './app.service'
 import { ManagerModule } from './manager/manager.module'
 import { DesignerModule } from './designer/designer.module'
+import { join } from 'path'
+import { ServeStaticModule } from '@nestjs/serve-static'
 
 @Module({
   imports: [
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', '..', '..', 'client', 'dist'),
+    }),
     KnexModule.forRoot({
       config: {
         client: 'sqlite3',
@@ -19,7 +23,7 @@ import { DesignerModule } from './designer/designer.module'
     ManagerModule,
     DesignerModule,
   ],
-  controllers: [AppController],
+  controllers: [],
   providers: [AppService],
 })
 export class AppModule {}
