@@ -5,7 +5,7 @@ import { SharedService } from '../shared.service'
 import { Table, Field, List, ListField } from 'src/schema'
 import { ManagerService } from './manager.service'
 
-@Controller('/manage/tables')
+@Controller('/api/manage/tables')
 export class ManagerController {
   constructor(
     @InjectKnex() private readonly knex: Knex,

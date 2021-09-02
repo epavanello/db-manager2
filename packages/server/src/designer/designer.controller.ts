@@ -5,7 +5,7 @@ import { SharedService } from 'src/shared.service'
 import { Field, Table } from 'src/schema'
 import { DesignerService } from './designer.service'
 
-@Controller('design/tables')
+@Controller('/api/design/tables')
 export class DesignerController {
   constructor(
     @InjectKnex() private readonly knex: Knex,
