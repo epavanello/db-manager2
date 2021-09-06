@@ -1,5 +1,8 @@
 # DB manager 2
 
+![Heroku deploy](https://github.com/epavanello/db-manager2/actions/workflows/deploy.yml/badge.svg)
+![Tests](https://github.com/epavanello/db-manager2/actions/workflows/test-server.yml/badge.svg)
+
 ## The idea
 
 SaaS platform to design database schema and relations and manage data graphically.
@@ -39,14 +42,14 @@ export default () => <>
 
 ## Frontend Stack
 
-* Svelte
-* Carbon IBM (for speed up the MVP)
-* Tailwind (For layout and advanced components)
+* [Sveltekit](https://kit.svelte.dev/docs)
+* [Carbon IBM](https://carbon-svelte.vercel.app/) (for speed up the MVP)
+* [Tailwindcss](https://tailwindcss.com/) (For layout and advanced components)
 
 ## Backend Stack
 
-* NestJS
-* Knex (For manage db queries)
+* [NestJS](https://nestjs.com/)
+* [Knexjs](https://knexjs.org/) (For manage db queries)
 * Sqlite/Postgres (Sqlite to speed up the local development, postgres for prod)
 * Swagger generator (To test NestJS integration)
 * Backend-side JS injection (or V8 binding for Golang backend)
