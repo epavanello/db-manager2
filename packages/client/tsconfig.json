@@ -35,6 +35,12 @@
       ],
       "$assets/*": [
         "./src/assets/*"
+      ],
+      "$server": [
+        "../server/src/*"
+      ],
+      "$server/*": [
+        "../server/src/*"
       ]
     },
     /**

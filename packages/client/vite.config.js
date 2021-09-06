@@ -21,6 +21,7 @@ export default defineConfig({
       $styles: path.resolve(path.dirname(''), './src/styles'),
       $lib: path.resolve(path.dirname(''), './src/lib'),
       $assets: path.resolve(path.dirname(''), './src/assets'),
+      $server: path.resolve(path.dirname(''), '../server/src'),
     },
   },
 })

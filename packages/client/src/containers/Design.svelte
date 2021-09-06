@@ -1,5 +1,6 @@
 <script lang="ts">
   import { fetchInStore, fetchJson } from '$lib/network'
+  import type { Table } from '$server/schema'
 
   import {
     Button,
@@ -27,19 +28,23 @@
   import Copy16 from 'carbon-icons-svelte/lib/Copy16'
   import Delete16 from 'carbon-icons-svelte/lib/Delete16'
   import AddAlt16 from 'carbon-icons-svelte/lib/AddAlt16'
+  import Fields from './design/Fields.svelte'
 
-  let {
-    data,
-    error,
-    resetError,
-    exec: reloadTables,
-  } = fetchInStore<{ id: string; name: string; description: string }[]>('/api/design/tables')
+  let { data, error, resetError, exec: reloadTables } = fetchInStore<Table[]>('/api/design/tables')
 
-  let selectedRowIds = []
+  let selectedRowIds: number[] = []
+
+  let selectedID: number = 0
+
+  $: {
+    if (selectedRowIds.length == 1) {
+      selectedID = $data?.findIndex((row) => row.id == selectedRowIds[0])
+    }
+  }
 
   let openModalAddTable = false
   let openModalConfirm = false
-  let selectedRow;
+  let selectedRow
 
   let addTableData = {
     name: '',
@@ -78,7 +83,11 @@
             <OverflowMenu flipped>
               <OverflowMenuItem text="Open" />
               <OverflowMenuItem text="Copy" />
-              <OverflowMenuItem on:click={() => (openModalConfirm = true, selectedRow = row)} danger text="Delete" />
+              <OverflowMenuItem
+                on:click={() => ((openModalConfirm = true), (selectedRow = row))}
+                danger
+                text="Delete"
+              />
             </OverflowMenu>
           {:else}{cell.value}{/if}
         </span>
@@ -110,7 +119,7 @@
       <p class="my-2">Use inside your codebase</p>
       <CodeSnippet expanded type="multi">
         {@html "&#60;script&#62;\n\timport { Table } from 'svelte-db-manager';\n&#60;/script&#62;\n&#60;Table " +
-          (selectedRowIds.length == 1 ? ' id={' + selectedRowIds[0] + '}' : '') +
+          (selectedRowIds.length == 1 ? ' id={' + $data?.[selectedID]?.name + '}' : '') +
           '/&#62;'}
       </CodeSnippet>
     </Column>
@@ -137,10 +146,8 @@
   modalHeading="Confirm"
   primaryButtonText="Confirm"
   secondaryButtonText="Cancel"
-  
   on:click:button--primary={() => sendDeleteTableForm()}
   on:click:button--secondary={() => (openModalConfirm = false)}
-
   size="xs"
 >
   <Form class="grid grid-cols-1 gap-8">
@@ -148,3 +155,7 @@
     <TextInput labelText="Description" readonly value={selectedRow?.description} />
   </Form>
 </Modal>
+
+{#if selectedRowIds.length == 1}
+  <Fields tableID={$data?.[selectedID]?.name || ''} />
+{/if}
