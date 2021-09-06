@@ -6,27 +6,21 @@
     CodeSnippet,
     Column,
     DataTable,
-    Form,
     Grid,
-    InlineLoading,
     InlineNotification,
-    Modal,
     OverflowMenu,
     OverflowMenuItem,
     Row,
     TextInput,
     Toolbar,
-    ToolbarBatchActions,
     ToolbarContent,
     ToolbarMenu,
     ToolbarMenuItem,
     ToolbarSearch,
   } from 'carbon-components-svelte'
 
-  import FolderOpen16 from 'carbon-icons-svelte/lib/FolderOpen16'
-  import Copy16 from 'carbon-icons-svelte/lib/Copy16'
-  import Delete16 from 'carbon-icons-svelte/lib/Delete16'
   import AddAlt16 from 'carbon-icons-svelte/lib/AddAlt16'
+  import ModalAlert from '$components/ModalAlert.svelte'
 
   let {
     data,
@@ -39,7 +33,7 @@
 
   let openModalAddTable = false
   let openModalConfirm = false
-  let selectedRow;
+  let selectedRow
 
   let addTableData = {
     name: '',
@@ -57,6 +51,14 @@
     reloadTables()
     openModalConfirm = false
   }
+
+  function openModalAdd() {
+    addTableData = {
+      name: '',
+      description: '',
+    }
+    openModalAddTable = true
+  }
 </script>
 
 <Grid>
@@ -70,7 +72,6 @@
           { key: 'overflow', empty: true },
         ]}
         rows={$data}
-        batchSelection
         bind:selectedRowIds
       >
         <span slot="cell" let:cell let:row>
@@ -78,24 +79,21 @@
             <OverflowMenu flipped>
               <OverflowMenuItem text="Open" />
               <OverflowMenuItem text="Copy" />
-              <OverflowMenuItem on:click={() => (openModalConfirm = true, selectedRow = row)} danger text="Delete" />
+              <OverflowMenuItem
+                on:click={() => ((openModalConfirm = true), (selectedRow = row))}
+                danger
+                text="Delete"
+              />
             </OverflowMenu>
           {:else}{cell.value}{/if}
         </span>
         <Toolbar>
-          <ToolbarBatchActions>
-            {#if selectedRowIds.length == 1}
-              <Button icon={FolderOpen16}>Open</Button>
-              <Button icon={Copy16}>Copy</Button>
-            {/if}
-            <Button icon={Delete16}>Delete</Button>
-          </ToolbarBatchActions>
           <ToolbarContent>
             <ToolbarSearch />
             <ToolbarMenu>
               <ToolbarMenuItem>Download</ToolbarMenuItem>
             </ToolbarMenu>
-            <Button on:click={() => (openModalAddTable = true)} icon={AddAlt16}>Add</Button>
+            <Button on:click={openModalAdd} icon={AddAlt16}>Add</Button>
           </ToolbarContent>
         </Toolbar>
       </DataTable>
@@ -117,34 +115,25 @@
   </Row>
 </Grid>
 
-<Modal
-  bind:open={openModalAddTable}
-  modalHeading="Add new table"
-  primaryButtonText="Confirm"
-  secondaryButtonText="Cancel"
-  on:click:button--secondary={() => (openModalAddTable = false)}
-  on:click:button--primary={() => sendAddTableForm()}
-  size="xs"
+<ModalAlert
+  bind:openModal={openModalAddTable}
+  on:confirm={sendAddTableForm}
+  title="Add new table"
+  on:cancel={() => (openModalAddTable = false)}
 >
-  <Form class="grid grid-cols-1 gap-8">
+  <div slot="body">
     <TextInput labelText="Name" bind:value={addTableData.name} />
     <TextInput labelText="Description" bind:value={addTableData.description} />
-  </Form>
-</Modal>
+  </div>
+</ModalAlert>
 
-<Modal
-  bind:open={openModalConfirm}
-  modalHeading="Confirm"
-  primaryButtonText="Confirm"
-  secondaryButtonText="Cancel"
-  
-  on:click:button--primary={() => sendDeleteTableForm()}
-  on:click:button--secondary={() => (openModalConfirm = false)}
-
-  size="xs"
+<ModalAlert
+  bind:openModal={openModalConfirm}
+  on:confirm={sendDeleteTableForm}
+  on:cancel={() => (openModalConfirm = false)}
 >
-  <Form class="grid grid-cols-1 gap-8">
+  <div slot="body">
     <TextInput labelText="Name" readonly value={selectedRow?.name} />
     <TextInput labelText="Description" readonly value={selectedRow?.description} />
-  </Form>
-</Modal>
+  </div>
+</ModalAlert>
