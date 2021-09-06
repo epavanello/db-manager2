@@ -14,7 +14,7 @@
     "prepare": "husky install",
     "test": "yarn workspace server run test",
     "lint": "yarn workspace server run lint",
-    "update-dependencies": "yarn"
+    "update-dependencies": "yarn install"
   },
   "workspaces": [
     "packages/*"
