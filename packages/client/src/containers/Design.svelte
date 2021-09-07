@@ -28,13 +28,24 @@
 
   let selectedRowIds: number[] = []
 
-  let selectedID: number = 0
+  let selectedTableIndex: number | undefined = 0
+  let selectedTableID: string | undefined
 
-  // $: {
-  //   if (selectedRowIds.length == 1) {
-  //     selectedID = $data?.findIndex((row) => row.id == selectedRowIds[0])
-  //   }
-  // }
+  function getSelectedTableID(): string | undefined {
+    if (typeof selectedTableIndex == 'number') {
+      return $data?.[selectedTableIndex]?.name
+    }
+  }
+
+  $: {
+    selectedTableID = ''
+    if (selectedRowIds.length == 1) {
+      selectedTableIndex = $data?.findIndex((row) => row.id == selectedRowIds[0])
+      if (typeof selectedTableIndex == 'number') {
+        selectedTableID = $data?.[selectedTableIndex]?.name
+      }
+    }
+  }
 
   let openModalAddTable = false
   let openModalConfirm = false
@@ -113,7 +124,7 @@
       <p class="my-2">Use inside your codebase</p>
       <CodeSnippet expanded type="multi">
         {@html "&#60;script&#62;\n\timport { Table } from 'svelte-db-manager';\n&#60;/script&#62;\n&#60;Table " +
-          (selectedRowIds.length == 1 ? ' id={' + $data?.[selectedID]?.name + '}' : '') +
+          (selectedRowIds.length == 1 ? ' id={' + getSelectedTableID() + '}' : '') +
           '/&#62;'}
       </CodeSnippet>
     </Column>
@@ -144,5 +155,5 @@
 </ModalAlert>
 
 {#if selectedRowIds.length == 1}
-  <Fields tableID={$data?.[selectedID]?.name || ''} />
+  <Fields tableID={getSelectedTableID() || ''} />
 {/if}
